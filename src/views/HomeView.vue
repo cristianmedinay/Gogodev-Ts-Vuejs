@@ -1,13 +1,95 @@
-<script setup lang="ts">
-import TheWelcome from '../ui/components/TheWelcome.vue';
+<template>
+  <h1>Listado de usuarios</h1>
+  <div>
+    <button @click="handleLayout(ListLayout)">Ver en lista</button>
+    <button @click="handleLayout(TableLayout)">Ver en tabla</button>
+    <button @click="handleLayout(CardLayout)"> Ver en tarjetas</button>
+  </div>
 
-  
+
+  <component :is="layout" :content="users"/>
+
+</template>
+
+<script lang="ts">
+/* import CardLayout from '@/ui/components/table/CardLayout.vue';
+import ListLayout from '@/ui/components/table/ListLayout.vue';
+import TableLayout from '@/ui/components/table/TableLayout.vue'; */
+import { defineComponent,ref,defineAsyncComponent } from 'vue';
+export default defineComponent({
 
 
+    name: 'HomeView',
+    data() {
+        return {
+
+        };
+    },
+    props: {},
+
+    components: {
+      
+    },
+
+    setup() {
+      const ListLayout = defineAsyncComponent(()=>import ('@/ui/components/table/ListLayout.vue'))
+      const TableLayout = defineAsyncComponent(()=>import ('@/ui/components/table/TableLayout.vue'))
+      const CardLayout = defineAsyncComponent(()=>import ('@/ui/components/table/CardLayout.vue'))
+
+      const layout = ref(ListLayout)
+      
+      const handleLayout = (cmp:any) => layout.value=cmp
+      const permisos=ref([
+        {
+          valor:'user',
+      
+        },
+        {
+          valor:'admin',
+          
+        }
+        ])
+      const users=ref([
+        {
+          name:'luis',
+          age:50,
+          position:"frontend"
+        },
+        {
+          name:'cris',
+          age:50,
+          position:"archited"
+        }
+        ])
+     
+
+
+      return{
+        users,
+        layout,
+        handleLayout,
+        ListLayout,
+        TableLayout,
+        CardLayout,
+        permisos
+      }
+
+    },
+
+    mounted() {},
+
+    methods: {},
+
+    computed: {},
+
+    watch: {},
+
+    directives: {},
+
+    filters: {}
+});
 </script>
 
-<template>
-  <main>
-    <TheWelcome />
-  </main>
-</template>
+<style lang="scss" scoped>
+
+</style>

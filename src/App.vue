@@ -1,11 +1,10 @@
 
 <template>
   <div>
-    <!-- <header>
-      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+    <header>
 
       <div class="wrapper">
-        <HelloWorld msg="You did it!" />
+        
 
         <nav>
           <RouterLink to="/">Home</RouterLink>
@@ -13,7 +12,7 @@
         </nav>
       </div>
     </header>
- -->
+
   <!--  <h3>{{ store.count }}</h3>
   <button @click="store.increment(1)">Añadir </button>      -->
 
@@ -40,7 +39,7 @@ export default defineComponent({
   setup() {
     const note = ref("")
     const descript = ref("")
-    watchEffect(()=>alert('se ha modificado el valor'+note.value))
+    /* watchEffect(()=>alert('se ha modificado el valor'+note.value)) */
   /*   watch(note,()=>alert('se ha modificado el valor'+note.value)) */
     return {
       note,
