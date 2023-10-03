@@ -26,13 +26,17 @@ const router = createRouter({
       path: '/dashboard',
       name: 'dashboard',
       meta:{
-        requireAuth:false
+        requireAuth:true,
+        role:'admin'
       },
       component: DashView
     },
     {
       path:'/login',
       name:'login',
+      meta:{
+        requireAuth:false
+      },
       component: LoginViewVue
     }
   ]
