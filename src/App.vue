@@ -1,25 +1,60 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <div>
+    <!-- <header>
+      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <div class="wrapper">
+        <HelloWorld msg="You did it!" />
 
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
+        <nav>
+          <RouterLink to="/">Home</RouterLink>
+          <RouterLink to="/about">About</RouterLink>
+        </nav>
+      </div>
+    </header>
+ -->
+  <!--  <h3>{{ store.count }}</h3>
+  <button @click="store.increment(1)">Añadir </button>      -->
 
+  <!-- <p>{{ this.getCount }}</p>
+  <button @click="increment(1)">Añadir </button>   -->
+  <input type="text" v-model="note">
+  <input type="text" v-model="descript">
   <RouterView />
+  </div>
 </template>
 
+
+<script lang="ts">
+
+import { RouterLink, RouterView } from 'vue-router'
+
+import { defineComponent, ref, watchEffect, watch} from 'vue';
+/* import {useExample} from '../src/stores/useExmaple'
+import { mapState, mapActions } from 'pinia'
+ */
+
+export default defineComponent({
+  name: 'App',
+  setup() {
+    const note = ref("")
+    const descript = ref("")
+    watchEffect(()=>alert('se ha modificado el valor'+note.value))
+  /*   watch(note,()=>alert('se ha modificado el valor'+note.value)) */
+    return {
+      note,
+      descript
+    }
+  }
+
+
+})
+</script>
+
+<style lang="scss" scoped>
+
+</style>
 <style scoped>
 header {
   line-height: 1.5;
