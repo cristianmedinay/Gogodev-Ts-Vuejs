@@ -15,13 +15,13 @@
 
   <MainLayout>
 
-    <template v-slot:main>
+    <template #main>
         <h5>main content</h5>
     </template>
-    <template v-slot:aux>
+    <template #aux>
         <h5>aux content</h5>
     </template>
-    
+
   </MainLayout>
 
   </div>
@@ -31,7 +31,7 @@
 /* import CardLayout from '@/ui/components/table/CardLayout.vue';
 import ListLayout from '@/ui/components/table/ListLayout.vue';
 import TableLayout from '@/ui/components/table/TableLayout.vue'; */
-import { defineComponent,ref,defineAsyncComponent } from 'vue';
+import { defineComponent,ref,defineAsyncComponent, onMounted, onUnmounted } from 'vue';
 import MainLayout from '../ui/layout/MainLayout.vue';
 export default defineComponent({
 
@@ -50,14 +50,14 @@ export default defineComponent({
     },
 
     setup() {
-      const ListLayout = defineAsyncComponent(()=>import ('@/ui/components/table/ListLayout.vue'))
-      const TableLayout = defineAsyncComponent(()=>import ('@/ui/components/table/TableLayout.vue'))
-      const CardLayout = defineAsyncComponent(()=>import ('@/ui/components/table/CardLayout.vue'))
+      const ListLayout = defineAsyncComponent(()=>import ('../ui/components/table/ListLayout.vue'))
+      const TableLayout = defineAsyncComponent(()=>import ("../ui/components/table/TableLayout.vue"))
+      const CardLayout = defineAsyncComponent(()=>import ('../ui/components/table/CardLayout.vue'))
 
       const layout = ref(ListLayout)
       const search =ref('');
       const handleLayout = (cmp:any) => layout.value=cmp
-      const handleSearch =() => {
+      const handleSearch = () => {
         filteredUsers.value = users.value.filter(item=> item.name.toLocaleLowerCase().includes(search.value.toLowerCase()))
       }
 

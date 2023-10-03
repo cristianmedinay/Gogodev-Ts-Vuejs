@@ -12,7 +12,7 @@ import { defineComponent } from 'vue';
 export default defineComponent({
     name: 'usercard',
     props:{
-        content:String
+        content:Object
     },
     data() {
        
@@ -25,11 +25,11 @@ export default defineComponent({
     setup() {
 
         return {
-           
         }
     },
-
+    
     mounted() {
+        this.content
        /*  console.log(content) */
     },
 

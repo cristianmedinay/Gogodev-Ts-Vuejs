@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import type MainLayoutVue from '@/ui/layout/MainLayout.vue';
+import  MainLayoutVue from '../ui/layout/MainLayout.vue';
 
 
 export default {
