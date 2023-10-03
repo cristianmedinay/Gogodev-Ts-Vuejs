@@ -1,4 +1,6 @@
 <template>
+  <div>
+
   <h1>Listado de usuarios</h1>
   <input type="text" v-model="search" @keyup="handleSearch">
   <div>
@@ -10,6 +12,19 @@
 
   <component :is="layout" :content="filteredUsers"/>
 
+
+  <MainLayout>
+
+    <template v-slot:main>
+        <h5>main content</h5>
+    </template>
+    <template v-slot:aux>
+        <h5>aux content</h5>
+    </template>
+    
+  </MainLayout>
+
+  </div>
 </template>
 
 <script lang="ts">
@@ -17,6 +32,7 @@
 import ListLayout from '@/ui/components/table/ListLayout.vue';
 import TableLayout from '@/ui/components/table/TableLayout.vue'; */
 import { defineComponent,ref,defineAsyncComponent } from 'vue';
+import MainLayout from '../ui/layout/MainLayout.vue';
 export default defineComponent({
 
 
@@ -29,6 +45,7 @@ export default defineComponent({
     props: {},
 
     components: {
+        MainLayout
       
     },
 

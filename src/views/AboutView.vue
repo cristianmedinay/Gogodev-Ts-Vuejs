@@ -1,8 +1,27 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+
+    <MainLayoutVue>
+      <h1>Contact Section</h1>
+
+    </MainLayoutVue>
+
   </div>
 </template>
+
+<script lang="ts">
+import type MainLayoutVue from '@/ui/layout/MainLayout.vue';
+
+
+export default {
+    setup(){
+
+    },components:{
+      MainLayoutVue
+    }
+}
+</script>
+
 
 <style>
 @media (min-width: 1024px) {
