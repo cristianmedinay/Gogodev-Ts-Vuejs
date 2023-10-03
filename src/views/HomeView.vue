@@ -1,5 +1,6 @@
 <template>
   <h1>Listado de usuarios</h1>
+  <input type="text" v-model="search" @keyup="handleSearch">
   <div>
     <button @click="handleLayout(ListLayout)">Ver en lista</button>
     <button @click="handleLayout(TableLayout)">Ver en tabla</button>
@@ -7,7 +8,7 @@
   </div>
 
 
-  <component :is="layout" :content="users"/>
+  <component :is="layout" :content="filteredUsers"/>
 
 </template>
 
@@ -37,8 +38,12 @@ export default defineComponent({
       const CardLayout = defineAsyncComponent(()=>import ('@/ui/components/table/CardLayout.vue'))
 
       const layout = ref(ListLayout)
-      
+      const search =ref('');
       const handleLayout = (cmp:any) => layout.value=cmp
+      const handleSearch =() => {
+        filteredUsers.value = users.value.filter(item=> item.name.toLocaleLowerCase().includes(search.value.toLowerCase()))
+      }
+
       const permisos=ref([
         {
           valor:'user',
@@ -61,8 +66,9 @@ export default defineComponent({
           position:"archited"
         }
         ])
-     
+        const filteredUsers =ref([])as any;
 
+        filteredUsers.value = users.value
 
       return{
         users,
@@ -71,7 +77,9 @@ export default defineComponent({
         ListLayout,
         TableLayout,
         CardLayout,
-        permisos
+        permisos,
+        
+        handleSearch,search,filteredUsers
       }
 
     },
